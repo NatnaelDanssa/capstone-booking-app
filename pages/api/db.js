@@ -17,4 +17,16 @@ export const events = [
     type: "Seminar",
     desc: "This is the third event description.",
   },
+  {
+    title: "Event 4",
+    date: "2023-11-10",
+    type: "Workshop",
+    desc: "This is the fourth event description.",
+  },
+  {
+    title: "Event 5",
+    date: "2024-01-20",
+    type: "Seminar",
+    desc: "This is the fifth event description.",
+  },
 ];
