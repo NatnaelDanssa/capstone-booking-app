@@ -14,7 +14,7 @@ export default function HomePage() {
             title={event.title}
             date={event.date}
             type={event.type}
-            desc={event.desc}
+            description={event.description}
           />
         );
       })}
