@@ -1,7 +1,7 @@
 import { useState } from "react";
 import GlobalStyle from "../styles";
-import { events as eventList } from "./api/db.js";
-import EventForm from "./components/EventForm";
+import { events as eventList } from "../api/db.js";
+import EventForm from "../components/EventForm";
 
 export default function App({ Component, pageProps }) {
   // State to store the list of events
@@ -10,7 +10,6 @@ export default function App({ Component, pageProps }) {
   // Function to handle form submission
   const handleSubmit = (eventData) => {
     setEvents([...events, eventData]);
-    setIsFormOpen([false]);
   };
 
   function addEvent(newEvent) {
