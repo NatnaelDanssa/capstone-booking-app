@@ -1,7 +1,6 @@
 import { useState } from "react";
 import GlobalStyle from "../styles";
 import { events as eventList } from "../api/db.js";
-import EventForm from "../components/EventForm";
 
 export default function App({ Component, pageProps }) {
   // State to store the list of events
