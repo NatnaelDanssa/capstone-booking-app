@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 export default function EventForm({
   title,
@@ -7,21 +8,20 @@ export default function EventForm({
   description,
   addEvent,
 }) {
+  const router = useRouter();
+
   function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const newEvent = Object.fromEntries(formData);
     addEvent(newEvent);
+    router.push("/");
   }
 
   return (
     <div>
-      <form
-        onSubmit={(event) => {
-          handleSubmit(event);
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title:</label>
           <input type="text" id="title" name="title" required></input>

@@ -7,7 +7,7 @@ import Flex from "./components/Flex";
 export default function HomePage({ events }) {
   return (
     <>
-      <Link href="/">Event Form</Link>
+      <Link href="/create">Event Form</Link>
       <Flex $direction="column">
         {events.map((event) => {
           return (
