@@ -7,13 +7,13 @@ const StyledArticle = styled.article`
   width: fit-content;
 `;
 
-export default function EventCard({ title, date, type, desc }) {
+export default function EventCard({ title, date, type, description }) {
   return (
     <StyledArticle>
       <h3>{title}</h3>
       <p>{date}</p>
       <p>{type}</p>
-      <p>{desc}</p>
+      <p>{description}</p>
     </StyledArticle>
   );
 }
