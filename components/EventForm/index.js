@@ -1,13 +1,6 @@
-import styled from "styled-components";
 import { useRouter } from "next/router";
 
-export default function EventForm({
-  title,
-  date,
-  type,
-  description,
-  addEvent,
-}) {
+export default function EventForm({ addEvent }) {
   const router = useRouter();
 
   function handleSubmit(event) {
@@ -24,15 +17,15 @@ export default function EventForm({
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title:</label>
-          <input type="text" id="title" name="title" required></input>
+          <input type="text" id="title" name="title" required />
         </div>
         <div>
           <label htmlFor="date">Date:</label>
-          <input type="date" id="date" name="date" required></input>
+          <input type="date" id="date" name="date" required />
         </div>
         <div>
           <label htmlFor="type">Type:</label>
-          <input type="text" id="type" name="type" required></input>
+          <input type="text" id="type" name="type" required />
         </div>
         <div>
           <label htmlFor="description">Description:</label>

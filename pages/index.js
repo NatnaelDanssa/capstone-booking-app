@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 
 import EventCard from "../components/EventCard";
@@ -12,7 +11,7 @@ export default function HomePage({ events }) {
         {events.map((event) => {
           return (
             <EventCard
-              key={uuidv4()}
+              key={event.id}
               title={event.title}
               date={event.date}
               type={event.type}
