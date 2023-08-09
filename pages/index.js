@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 
 import EventCard from "../components/EventCard";
-import Flex from "../components/Flex";
+import Flex from "@/components/StyledComponents/Flex";
 
 export default function HomePage({ events }) {
   return (
