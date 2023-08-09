@@ -2,6 +2,7 @@ import { useState } from "react";
 import GlobalStyle from "../styles";
 import { events as eventList } from "../api/db.js";
 import { v4 as uuidv4 } from "uuid";
+import Navigation from "@/components/navigation";
 
 export default function App({ Component, pageProps }) {
   // State to store the list of events
@@ -14,6 +15,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
+      <Navigation />
       <Component {...pageProps} events={events} addEvent={addEvent} />
     </>
   );
