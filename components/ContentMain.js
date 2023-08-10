@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MainContent = styled.main`
+const ContentMain = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,4 +8,4 @@ const MainContent = styled.main`
   margin-top: 6rem;
 `;
 
-export default MainContent;
+export default ContentMain;

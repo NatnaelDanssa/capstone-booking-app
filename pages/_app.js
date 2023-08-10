@@ -3,7 +3,7 @@ import GlobalStyle from "../styles";
 import { events as eventList } from "../api/db.js";
 import { v4 as uuidv4 } from "uuid";
 import Navigation from "../components/Navigation";
-import MainContent from "../components/MainContent";
+import ContentMain from "../components/ContentMain";
 
 export default function App({ Component, pageProps }) {
   // State to store the list of events
@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <Navigation />
-      <MainContent />
+      <ContentMain />
       <Component {...pageProps} events={events} addEvent={addEvent} />
     </>
   );
