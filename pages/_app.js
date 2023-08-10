@@ -3,7 +3,7 @@ import GlobalStyle from "../styles";
 import { events as eventList } from "../api/db.js";
 import { v4 as uuidv4 } from "uuid";
 import Navigation from "/components/navigation";
-import { MainContent } from "@/components/maincontent";
+import MainContent from "/components/mainContent";
 
 export default function App({ Component, pageProps }) {
   // State to store the list of events
