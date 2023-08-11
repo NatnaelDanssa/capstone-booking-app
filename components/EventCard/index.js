@@ -1,27 +1,45 @@
 import styled from "styled-components";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-export default function EventCard({ title, date, type, description }) {
+export default function EventCard({ id, title, date, type, description }) {
   return (
     <>
-      <StyledArticle>
+      <StyledArticle href={`/events/${id}`}>
         <StyleTitle>{title}</StyleTitle>
-        <p>{date}</p>
-        <p>{type}</p>
-        <p>{description}</p>
+        <StyleDate>{date}</StyleDate>
+        <StyleType>{type}</StyleType>
+        <StyleDescription>{description}</StyleDescription>
       </StyledArticle>
     </>
   );
 }
-const StyledArticle = styled.article`
+const StyledArticle = styled.a`
   background-color: teal;
   padding: 1rem;
   color: white;
   width: fit-content;
   border: 2px solid black;
   border-radius: 2rem;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    background-color: #95091b;
+    color: white;
+  }
 `;
 
 const StyleTitle = styled.h3`
   background-color:
   color: black;
+`;
+const StyleDate = styled.p`
+  width: 110px;
+  height: 25px;
+`;
+const StyleType = styled.p`
+  background-color: teal;
+`;
+const StyleDescription = styled.p`
+  background-color: teal;
 `;
