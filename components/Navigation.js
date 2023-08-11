@@ -44,7 +44,7 @@ const NavigationContainer = styled.ul`
   border-top: 1px solid;
   border-bottom: 1px solid;
 `;
-const StyledLink = styled(Link)`
+const AddEventButton = styled(Link)`
   color: green;
   width: 110px;
   font-size: 1em;
@@ -62,4 +62,21 @@ const StyledLink = styled(Link)`
     color: white;
   }
 `;
-
+const HomeButton = styled(Link)`
+  color: green;
+  width: 110px;
+  font-size: 1em;
+  background-color: #7c0716;
+  color: white;
+  border: 2px solid #7c0716;
+  border-radius: 20px;
+  position: relative;
+  text-align: center;
+  a {
+    text-decoration: none;
+  }
+  &:hover {
+    background-color: #099584;
+    color: white;
+  }
+`;
