@@ -13,12 +13,25 @@ export default function App({ Component, pageProps }) {
     setEvents([...events, { ...newEvent, id: uuidv4() }]);
   }
 
+  function handleUpdate(updatedEvent) {
+    const updatedEvents = events.filter(
+      (event) => event.id !== updatedEvent.id
+    );
+
+    setEvents([updatedEvent, ...updatedEvents]);
+  }
+
   return (
     <>
       <GlobalStyle />
       <Navigation />
       <ContentMain />
-      <Component {...pageProps} events={events} addEvent={addEvent} />
+      <Component
+        {...pageProps}
+        events={events}
+        addEvent={addEvent}
+        handleUpdate={handleUpdate}
+      />
     </>
   );
 }

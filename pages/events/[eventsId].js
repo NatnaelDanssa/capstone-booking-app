@@ -1,30 +1,101 @@
 import { styled } from "styled-components";
 import { useRouter } from "next/router";
 import { events } from "@/api/db";
+import { useEffect, useState } from "react";
 
-export default function EventsDetail() {
+export default function EventsDetail({ handleUpdate }) {
+  const [editMode, setEditMode] = useState(false);
+  const [eventObject, setEventObject] = useState(null);
+
   const router = useRouter();
   const eventsId = router.query.eventsId;
 
-  const specialEvent = events.find((event) => event.id == eventsId);
-  if (!specialEvent) {
-    return null;
-  }
+  const eventToEdit = events.find((event) => event.id == eventsId);
+
+  useEffect(() => {
+    setEventObject(eventToEdit);
+  }, [eventToEdit]);
+
   const handleEditClick = () => {
-    // Navigate to the edit page for the current event
-    router.push(`/edit-event/${eventsId}`);
+    setEditMode(!editMode);
   };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEventObject((prevEvent) => ({
+      ...prevEvent,
+      [name]: value,
+    }));
+  };
+
+  const handleSaveClick = () => {
+    setEditMode(false);
+    handleUpdate(eventObject);
+  };
+
+  if (!eventToEdit) {
+    return;
+  }
 
   return (
     <article>
-      <TitleContainer>{specialEvent?.title}</TitleContainer>
-      <DateContainer>{specialEvent?.date}</DateContainer>
-      <TypeContainer>{specialEvent?.type}</TypeContainer>`
-      <DescriptionContainer>{specialEvent?.description}</DescriptionContainer>
-      <EditButton onClick={handleEditClick}>EDIT EVENT</EditButton>
+      <TitleContainer>
+        {editMode ? (
+          <input
+            type="text"
+            name="title"
+            value={eventObject.title}
+            onChange={handleInputChange}
+          />
+        ) : (
+          eventObject?.title
+        )}
+      </TitleContainer>
+      <DateContainer>
+        {editMode ? (
+          <input
+            type="text"
+            name="date"
+            value={eventObject?.date}
+            onChange={handleInputChange}
+          />
+        ) : (
+          eventObject?.date
+        )}
+      </DateContainer>
+      <TypeContainer>
+        {editMode ? (
+          <input
+            type="text"
+            name="type"
+            value={eventObject?.type}
+            onChange={handleInputChange}
+          />
+        ) : (
+          eventObject?.type
+        )}
+      </TypeContainer>
+      <DescriptionContainer>
+        {editMode ? (
+          <textarea
+            name="description"
+            value={eventObject?.description}
+            onChange={handleInputChange}
+          />
+        ) : (
+          eventObject?.description
+        )}
+      </DescriptionContainer>
+      <ButtonContainer>
+        {editMode ? (
+          <button onClick={handleSaveClick}>Save Changes</button>
+        ) : (
+          <button onClick={handleEditClick}>EDIT EVENT</button>
+        )}
+      </ButtonContainer>
     </article>
   );
 }
+
 const TitleContainer = styled.h2`
   padding-left: 20px;
   display: flex;
@@ -61,7 +132,7 @@ const DescriptionContainer = styled.div`
   line-height: 1.4;
   margin-top: 0;
 `;
-const EditButton = styled.button`
+const ButtonContainer = styled.button`
   padding-left: 20px;
   background-color: #95091b;
   color: white;
