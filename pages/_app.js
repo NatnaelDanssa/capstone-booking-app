@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         events={events}
         addEvent={addEvent}
-        handleUpdate={handleUpdate}
+        updateEvent={updateEvent}
       />
     </>
   );

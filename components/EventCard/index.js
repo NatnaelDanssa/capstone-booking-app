@@ -5,16 +5,16 @@ import { useRouter } from "next/router";
 export default function EventCard({ id, title, date, type, description }) {
   return (
     <>
-      <StyledArticle href={`/events/${id}`}>
+      <StyledLink href={`/events/${id}`}>
         <StyleTitle>{title}</StyleTitle>
         <StyleDate>{date}</StyleDate>
         <StyleType>{type}</StyleType>
         <StyleDescription>{description}</StyleDescription>
-      </StyledArticle>
+      </StyledLink>
     </>
   );
 }
-const StyledArticle = styled.a`
+const StyledLink = styled(Link)`
   background-color: teal;
   padding: 1rem;
   color: white;
