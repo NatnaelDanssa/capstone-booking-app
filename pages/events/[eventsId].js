@@ -19,8 +19,8 @@ export default function EventsDetail({ handleUpdate }) {
   const handleEditClick = () => {
     setEditMode(!editMode);
   };
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
     setEventObject((prevEvent) => ({
       ...prevEvent,
       [name]: value,
