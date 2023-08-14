@@ -132,3 +132,11 @@ const DescriptionContainer = styled.div`
   line-height: 1.4;
   margin-top: 0;
 `;
+const ButtonContainer = styled.button`
+  padding-left: 20px;
+  background-color: #95091b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+`;
