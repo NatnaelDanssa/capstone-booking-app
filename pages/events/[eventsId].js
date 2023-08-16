@@ -38,14 +38,17 @@ export default function EventsDetail({ handleUpdate }) {
 
   return (
     <article>
-       {if (editMode){ return
       <TitleContainer>
+        {editMode ? (
           <input
             type="text"
             name="title"
             value={eventObject.title}
             onChange={handleInputChange}
           />
+        ) : (
+          eventObject?.title
+        )}
       </TitleContainer>
       <DateContainer>
         {editMode ? (
