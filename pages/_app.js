@@ -9,8 +9,16 @@ export default function App({ Component, pageProps }) {
   // State to store the list of events
   const [events, setEvents] = useState(eventList);
 
-  function addEvent(newEvent) {
+  function handleAdd(newEvent) {
     setEvents([...events, { ...newEvent, id: uuidv4() }]);
+  }
+
+  function handleUpdate(updatedEvent) {
+    const updatedEvents = events.filter(
+      (event) => event.id !== updatedEvent.id
+    );
+
+    setEvents([updatedEvent, ...updatedEvents]);
   }
 
   return (
@@ -18,7 +26,12 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Navigation />
       <ContentMain />
-      <Component {...pageProps} events={events} addEvent={addEvent} />
+      <Component
+        {...pageProps}
+        events={events}
+        handleAdd={handleAdd}
+        handleUpdate={handleUpdate}
+      />
     </>
   );
 }

@@ -9,6 +9,7 @@ export default function HomePage({ events }) {
           return (
             <EventCard
               key={event.id}
+              id={event.id}
               title={event.title}
               date={event.date}
               type={event.type}
