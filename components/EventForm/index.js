@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-export default function EventForm({ addEvent }) {
+export default function EventForm({ handleAdd }) {
   const router = useRouter();
 
   function handleSubmit(event) {
@@ -8,7 +8,7 @@ export default function EventForm({ addEvent }) {
 
     const formData = new FormData(event.target);
     const newEvent = Object.fromEntries(formData);
-    addEvent(newEvent);
+    handleAdd(newEvent);
     router.push("/");
   }
 

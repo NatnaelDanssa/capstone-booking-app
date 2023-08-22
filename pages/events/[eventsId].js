@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { events } from "@/api/db";
 import { useEffect, useState } from "react";
 
-export default function EventsDetail({ handleUpdate }) {
+export default function EventsDetail({ handleUpdate, handleDeleteEvent }) {
   const [editMode, setEditMode] = useState(false);
   const [eventObject, setEventObject] = useState(null);
 
@@ -32,6 +32,22 @@ export default function EventsDetail({ handleUpdate }) {
     handleUpdate(eventObject);
   };
 
+  // const handleDeleteEvent = () => {
+  //   const updatedEvents = events.filter((event) => event.id !== eventToEdit.id);
+  //   handleUpdate(updatedEvents);
+  //   setEventObject(null);
+  // };
+
+  const handleDeleteClick = () => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this event?"
+    );
+    if (confirmDelete) {
+      handleDeleteEvent(eventsId);
+      router.push("/");
+    }
+  };
+
   if (!eventToEdit) {
     return;
   }
@@ -43,11 +59,11 @@ export default function EventsDetail({ handleUpdate }) {
           <input
             type="text"
             name="title"
-            value={eventObject.title}
+            value={eventObject?.title || ""}
             onChange={handleInputChange}
           />
         ) : (
-          eventObject?.title
+          eventObject?.title || ""
         )}
       </TitleContainer>
       <DateContainer>
@@ -55,11 +71,11 @@ export default function EventsDetail({ handleUpdate }) {
           <input
             type="text"
             name="date"
-            value={eventObject?.date}
+            value={eventObject?.date || ""}
             onChange={handleInputChange}
           />
         ) : (
-          eventObject?.date
+          eventObject?.date || ""
         )}
       </DateContainer>
       <TypeContainer>
@@ -67,27 +83,30 @@ export default function EventsDetail({ handleUpdate }) {
           <input
             type="text"
             name="type"
-            value={eventObject?.type}
+            value={eventObject?.type || ""}
             onChange={handleInputChange}
           />
         ) : (
-          eventObject?.type
+          eventObject?.type || ""
         )}
       </TypeContainer>
       <DescriptionContainer>
         {editMode ? (
           <textarea
             name="description"
-            value={eventObject?.description}
+            value={eventObject?.description || ""}
             onChange={handleInputChange}
           />
         ) : (
-          eventObject?.description
+          eventObject?.description || ""
         )}
       </DescriptionContainer>
       <ButtonContainer>
         {editMode ? (
-          <button onClick={handleSaveClick}>Save Changes</button>
+          <>
+            <button onClick={handleSaveClick}>Save Changes</button>
+            <button onClick={handleDeleteClick}>Delete Event</button>
+          </>
         ) : (
           <button onClick={handleEditClick}>EDIT EVENT</button>
         )}
