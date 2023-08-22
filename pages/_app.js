@@ -20,7 +20,10 @@ export default function App({ Component, pageProps }) {
 
     setEvents([updatedEvent, ...updatedEvents]);
   }
-
+  function handleDeleteEvent(deletedEventId) {
+    const newEventList = events.filter((event) => event.id !== deletedEventId);
+    setEvents(newEventList);
+  }
   return (
     <>
       <GlobalStyle />
@@ -31,6 +34,7 @@ export default function App({ Component, pageProps }) {
         events={events}
         handleAdd={handleAdd}
         handleUpdate={handleUpdate}
+        handleDeleteEvent={handleDeleteEvent}
       />
     </>
   );

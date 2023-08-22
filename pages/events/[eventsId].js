@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { events } from "@/api/db";
 import { useEffect, useState } from "react";
 
-export default function EventsDetail({ handleUpdate }) {
+export default function EventsDetail({ handleUpdate, handleDeleteEvent }) {
   const [editMode, setEditMode] = useState(false);
   const [eventObject, setEventObject] = useState(null);
 
@@ -32,18 +32,19 @@ export default function EventsDetail({ handleUpdate }) {
     handleUpdate(eventObject);
   };
 
-  const handleDeleteEvent = () => {
-    const updatedEvents = events.filter((event) => event.id !== eventToEdit.id);
-    handleUpdate(updatedEvents);
-    setEventObject(null);
-  };
+  // const handleDeleteEvent = () => {
+  //   const updatedEvents = events.filter((event) => event.id !== eventToEdit.id);
+  //   handleUpdate(updatedEvents);
+  //   setEventObject(null);
+  // };
 
   const handleDeleteClick = () => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this event?"
     );
     if (confirmDelete) {
-      handleDeleteEvent();
+      handleDeleteEvent(eventsId);
+      router.push("/");
     }
   };
 
@@ -93,11 +94,11 @@ export default function EventsDetail({ handleUpdate }) {
         {editMode ? (
           <textarea
             name="description"
-            value={eventObject?.description}
+            value={eventObject?.description || ""}
             onChange={handleInputChange}
           />
         ) : (
-          eventObject?.description
+          eventObject?.description || ""
         )}
       </DescriptionContainer>
       <ButtonContainer>
