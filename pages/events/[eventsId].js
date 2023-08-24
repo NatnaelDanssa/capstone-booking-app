@@ -1,9 +1,13 @@
 import { styled } from "styled-components";
 import { useRouter } from "next/router";
-import { events } from "@/api/db";
+
 import { useEffect, useState } from "react";
 
-export default function EventsDetail({ handleUpdate, handleDeleteEvent }) {
+export default function EventsDetail({
+  handleUpdate,
+  handleDeleteEvent,
+  events,
+}) {
   const [editMode, setEditMode] = useState(false);
   const [eventObject, setEventObject] = useState(null);
 
@@ -11,6 +15,7 @@ export default function EventsDetail({ handleUpdate, handleDeleteEvent }) {
   const eventsId = router.query.eventsId;
 
   const eventToEdit = events.find((event) => event.id == eventsId);
+  console.log("events", events);
 
   useEffect(() => {
     setEventObject(eventToEdit);
@@ -116,46 +121,55 @@ export default function EventsDetail({ handleUpdate, handleDeleteEvent }) {
 }
 
 const TitleContainer = styled.h2`
+  font-size: 28px;
   padding-left: 20px;
   display: flex;
   flex-direction: column;
   align-items: left;
   color: #95091b;
-  line-height: 1.4;
-  margin-top: 0;
+  line-height: 3.4;
+  margin-top: 0.5px;
 `;
-const DateContainer = styled.div`
+const DateContainer = styled.p`
+  font-size: 18px;
   padding-left: 20px;
   display: flex;
   flex-direction: column;
   align-items: left;
   color: #95091b;
-  line-height: 1.4;
-  margin-top: 0;
+  line-height: 3.4;
+  margin-top: 0.5;
+  margin-bottom: 10px;
 `;
-const TypeContainer = styled.div`
+const TypeContainer = styled.p`
+  font-size: 18px;
   padding-left: 20px;
   display: flex;
   flex-direction: column;
   align-items: left;
   color: #95091b;
-  line-height: 1.4;
-  margin-top: 0;
+  line-height: 3.4;
+  margin-top: 0.5;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 `;
-const DescriptionContainer = styled.div`
+const DescriptionContainer = styled.p`
   padding-left: 20px;
   display: flex;
   flex-direction: column;
   align-items: left;
   color: #95091b;
-  line-height: 1.4;
-  margin-top: 0;
+  line-height: 3.4;
+  margin-top: 0.5;
+  margin-bottom: 10px;
 `;
 const ButtonContainer = styled.button`
+  font-size: 18px;
   padding-left: 20px;
   background-color: #95091b;
   color: white;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
+  margin-bottom: 10px;
 `;

@@ -46,8 +46,9 @@ const NavigationContainer = styled.ul`
 `;
 const AddEventButton = styled(Link)`
   color: green;
-  width: 110px;
-  font-size: 1em;
+  width: 170px;
+  font-size: 1.2em;
+  padding: 0.5rem 1rem;
   background-color: #7c0716;
   color: white;
   border: 2px solid #7c0716;
@@ -64,8 +65,9 @@ const AddEventButton = styled(Link)`
 `;
 const HomeButton = styled(Link)`
   color: green;
-  width: 110px;
-  font-size: 1em;
+  width: 170px;
+  font-size: 1.2em;
+  padding: 0.5rem 1rem;
   background-color: #7c0716;
   color: white;
   border: 2px solid #7c0716;

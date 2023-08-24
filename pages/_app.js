@@ -10,7 +10,9 @@ export default function App({ Component, pageProps }) {
   const [events, setEvents] = useState(eventList);
 
   function handleAdd(newEvent) {
+    console.log("new event", newEvent);
     setEvents([...events, { ...newEvent, id: uuidv4() }]);
+    console.log([...events, { ...newEvent, id: uuidv4() }]);
   }
 
   function handleUpdate(updatedEvent) {
